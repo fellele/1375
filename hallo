@@ -1,0 +1,43 @@
+num = int(input('gib mir ein n: '))
+
+n_faculty = list(range(1,num+1))[::-1]
+print(n_faculty)
+
+arr = []
+
+for i in n_faculty:
+    if i == num:
+        arr.append(i)
+    else:
+        arr[0] = i * arr[0]
+
+print(arr)
+
+
+_______________________________________
+
+
+from typing import List
+def noteneingabe():
+
+    tests = int(input('Wie viele Tests hast du geschrieben? '))
+    noten = []
+    i = 0
+    while i < tests:
+
+        note = float(input('Gib deine Note ein: '))
+        noten.append(note)
+        i+=1
+
+    return noten
+
+arr_noten = noteneingabe()
+wunschnote = float(input('Dein Wunschdurchschnitt: '))
+test_last = (len(arr_noten)+1)*wunschnote-sum(arr_noten)
+if test_last < 1.0:
+    print('Den Wunschdurchschnitt kannst du nicht mehr erreichen.')
+elif test_last <= 6.0:
+    print('Du brauchst eine ' + str(test_last) + ', um deinen Wunschdurchschnitt zu erreichen.')
+elif test_last > 6.0:
+    print('Du kannst deinen Wunschdurchschnitt gar nicht mehr verfehlen.')
+print(test_last)
